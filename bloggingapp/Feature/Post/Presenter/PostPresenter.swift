@@ -41,15 +41,17 @@ extension PostPresenter {
     func fetchPosts() {
         postService.fetchPosts { [weak self] (result) in
             guard let self = self else { return }
-            switch result {
-            case.failure(let error):
-                self.postView?.showErrorMsg(msg: error.title)
-            case.success(let data):
-                guard let posts = data else {
-                    self.postView?.setEmptyState()
-                    return
+            DispatchQueue.main.async {
+                switch result {
+                case.failure(let error):
+                    self.postView?.showErrorMsg(msg: error.title)
+                case.success(let data):
+                    guard let posts = data else {
+                        self.postView?.setEmptyState()
+                        return
+                    }
+                    self.postView?.loadPosts(posts: posts)
                 }
-                self.postView?.loadPosts(posts: posts)
             }
         }
     }

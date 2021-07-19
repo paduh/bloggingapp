@@ -8,10 +8,11 @@
 import Foundation
 
 protocol PostView {
+    var pageTitle: String { get }
+    
     func showLoading()
     func hideLoading()
     func showErrorMsg(msg: String)
     func setEmptyState()
     func loadPosts(posts: [Post])
-    func setTitle(title: String)
 }

@@ -9,6 +9,6 @@ import Foundation
 
 struct Constant {
     
-    static let baseUrl = ""
+    static let baseUrl = "http://jsonplaceholder.typicode.com"
     static let posts = "/posts"
 }
