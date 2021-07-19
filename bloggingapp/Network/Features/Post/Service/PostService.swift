@@ -27,7 +27,7 @@ class PostService<Model: Codable>: PostServiceDelegate {
 // MARK: - PostService & PostServiceDelegate
 
 extension PostService {
-    func fetchPosts(completion: @escaping PostCompletion) {
-        
+    func fetchPosts(completion: @escaping PostCompletion<Model>) {
+        router.request(route: .posts, completion: completion)
     }
 }
