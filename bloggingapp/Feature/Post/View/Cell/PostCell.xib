@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,27 +17,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="378" height="131"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg6-Tq-FPT">
-                        <rect key="frame" x="16" y="16" width="346" height="20.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HM-p7-4hK">
-                        <rect key="frame" x="16" y="48.5" width="346" height="17.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dz-De-BXi" customClass="CardView" customModule="bloggingapp" customModuleProvider="target">
+                        <rect key="frame" x="16" y="8" width="346" height="115"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg6-Tq-FPT">
+                                <rect key="frame" x="12" y="12" width="322" height="20.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HM-p7-4hK">
+                                <rect key="frame" x="12" y="44.5" width="322" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Dg6-Tq-FPT" firstAttribute="top" secondItem="5dz-De-BXi" secondAttribute="top" constant="12" id="1xR-bu-mCT"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2HM-p7-4hK" secondAttribute="bottom" constant="12" id="4pk-bz-JWg"/>
+                            <constraint firstItem="2HM-p7-4hK" firstAttribute="top" secondItem="Dg6-Tq-FPT" secondAttribute="bottom" constant="12" id="PEq-pB-tCt"/>
+                            <constraint firstItem="Dg6-Tq-FPT" firstAttribute="leading" secondItem="5dz-De-BXi" secondAttribute="leading" constant="12" id="ecQ-hE-tp4"/>
+                            <constraint firstAttribute="trailing" secondItem="Dg6-Tq-FPT" secondAttribute="trailing" constant="12" id="fDk-TI-298"/>
+                            <constraint firstItem="2HM-p7-4hK" firstAttribute="trailing" secondItem="Dg6-Tq-FPT" secondAttribute="trailing" id="s2A-Mn-XPL"/>
+                            <constraint firstItem="2HM-p7-4hK" firstAttribute="leading" secondItem="Dg6-Tq-FPT" secondAttribute="leading" id="ymO-Dn-ZwJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2HM-p7-4hK" firstAttribute="top" secondItem="Dg6-Tq-FPT" secondAttribute="bottom" constant="12" id="3yx-cl-tzg"/>
-                    <constraint firstItem="Dg6-Tq-FPT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="86e-TZ-TUU"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2HM-p7-4hK" secondAttribute="bottom" constant="16" id="EcL-Ix-lmu"/>
-                    <constraint firstItem="2HM-p7-4hK" firstAttribute="trailing" secondItem="Dg6-Tq-FPT" secondAttribute="trailing" id="LE7-rQ-SdV"/>
-                    <constraint firstAttribute="trailing" secondItem="Dg6-Tq-FPT" secondAttribute="trailing" constant="16" id="Uqx-9x-nYG"/>
-                    <constraint firstItem="2HM-p7-4hK" firstAttribute="leading" secondItem="Dg6-Tq-FPT" secondAttribute="leading" id="auj-X2-GeR"/>
-                    <constraint firstItem="Dg6-Tq-FPT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cBa-q0-zpS"/>
+                    <constraint firstAttribute="bottom" secondItem="5dz-De-BXi" secondAttribute="bottom" constant="8" id="0y8-vs-Crv"/>
+                    <constraint firstItem="5dz-De-BXi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="OBy-nb-LCJ"/>
+                    <constraint firstAttribute="trailing" secondItem="5dz-De-BXi" secondAttribute="trailing" constant="16" id="p5c-0f-fB9"/>
+                    <constraint firstItem="5dz-De-BXi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="tMg-Au-iMM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -47,4 +65,9 @@
             <point key="canvasLocation" x="179.71014492753625" y="147.65625"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

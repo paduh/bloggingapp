@@ -13,26 +13,47 @@ final class PostDetailsController: UIViewController {
     
     // MARK: IBOutlets
     
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var bodyLabel: UILabel!
     @IBOutlet weak private var activityView: UIActivityIndicatorView!
     @IBOutlet weak private var tableView: UITableView!{
         didSet {
-            tableView.register(PostCell.self)
+            tableView.register(CommentCell.self)
         }
     }
     
     // MARK:  Properties
     
-    private var post: Post?
+    var post: Post?
     private var presenter: PostPresenterPresentable!
     private var dataSource: GenericTableViewDelegate<Comment, CommentCell>!
+    
+    // MARK:  Initialiser
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    init(presenter: PostPresenterPresentable) {
+        super.init(nibName: nil, bundle: nil)
+        self.presenter = presenter
+    }
 
     
     // MARK: Life cycle methods
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupDataSource()
+        setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        handlePresenter()
+        guard let post = post else { return }
+        presenter.fetchPostComment(id: post.id)
+        navigationController?.topViewController?.title = pageTitle
     }
     
     private func setupDataSource() {
@@ -42,9 +63,15 @@ final class PostDetailsController: UIViewController {
     }
     
     private func handlePresenter() {
-        presenter = PostPresenter(navigator: PostNavigator(navigationController: navigationController))
+        presenter = PostPresenter()
         presenter.viewDidLoad()
         presenter.attacheView(self)
+    }
+    
+    private func setupView() {
+        guard let post = post else { return }
+        titleLabel.text = post.title
+        bodyLabel.text = post.body
     }
 }
 
@@ -73,7 +100,7 @@ private extension PostDetailsController {
 
 extension PostDetailsController: PostView {
     var pageTitle: String {
-        Text.posts.rawValue
+        Text.comments.rawValue
     }
     
     func showLoading() {
@@ -93,6 +120,9 @@ extension PostDetailsController: PostView {
     }
     
     func loadPostComments(comments: [Comment]) {
-        
+        dataSource = handleDataSource(comments: comments)
+        setupDataSource()
+        tableView.isHidden = comments.isEmpty
+        tableView.reloadData()
     }
 }

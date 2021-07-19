@@ -9,10 +9,10 @@ import Foundation
 
 protocol PostPresenterPresentable {
     var postView: PostView? { get set }
-    var navigator: PostNavigator { get set }
     
     func viewDidLoad()
     func detachView()
     func attacheView(_ view: PostView)
     func fetchPosts()
+    func fetchPostComment(id: Int)
 }

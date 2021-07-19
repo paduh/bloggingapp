@@ -26,4 +26,5 @@ extension Text {
     static let cannotDequeueheader = Text(rawValue: "Could not dequeue header cell with type")
     static let cannotDequeueCell = Text(rawValue: "Could not dequeue cell with type")
     static let posts = Text(rawValue: "Posts")
+    static let comments = Text(rawValue: "Comments")
 }

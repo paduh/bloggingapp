@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostDetailsController" customModule="bloggingapp" customModuleProvider="target">
             <connections>
                 <outlet property="activityView" destination="gzd-2a-Ttq" id="T4c-gQ-Hbk"/>
+                <outlet property="bodyLabel" destination="Qon-eC-bH5" id="ius-Le-YLP"/>
                 <outlet property="tableView" destination="0Pn-qC-rDI" id="f6R-RH-3xg"/>
+                <outlet property="titleLabel" destination="Vnl-Hh-hKs" id="gZQ-mr-Sgp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,32 +22,43 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Pn-qC-rDI">
-                    <rect key="frame" x="16" y="89.5" width="382" height="672.5"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Pn-qC-rDI">
+                    <rect key="frame" x="0.0" y="92" width="414" height="758"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2F-ZD-chS">
-                    <rect key="frame" x="16" y="60" width="382" height="17.5"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gzd-2a-Ttq">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnl-Hh-hKs">
+                    <rect key="frame" x="16" y="60" width="382" height="0.0"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qon-eC-bH5">
+                    <rect key="frame" x="16" y="76" width="382" height="0.0"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gzd-2a-Ttq">
-                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="g2F-ZD-chS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="J4P-ir-8oz"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g2F-ZD-chS" secondAttribute="trailing" constant="16" id="PAf-7M-bWe"/>
+                <constraint firstItem="Vnl-Hh-hKs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="0Na-Ng-l59"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vnl-Hh-hKs" secondAttribute="trailing" constant="16" id="42o-WI-6HQ"/>
+                <constraint firstItem="Vnl-Hh-hKs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6ue-fG-mLH"/>
+                <constraint firstItem="Qon-eC-bH5" firstAttribute="leading" secondItem="Vnl-Hh-hKs" secondAttribute="leading" id="DYg-bt-O6k"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qon-eC-bH5" secondAttribute="trailing" constant="16" id="LVV-bG-X97"/>
+                <constraint firstItem="Qon-eC-bH5" firstAttribute="trailing" secondItem="Vnl-Hh-hKs" secondAttribute="trailing" id="QTi-eC-KTo"/>
+                <constraint firstItem="Qon-eC-bH5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="T4k-0t-hub"/>
                 <constraint firstItem="gzd-2a-Ttq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Tij-u3-msa"/>
-                <constraint firstItem="0Pn-qC-rDI" firstAttribute="top" secondItem="g2F-ZD-chS" secondAttribute="bottom" constant="12" id="Wzb-v1-OQI"/>
+                <constraint firstItem="0Pn-qC-rDI" firstAttribute="top" secondItem="Qon-eC-bH5" secondAttribute="bottom" constant="16" id="Wck-8g-Zsk"/>
                 <constraint firstItem="gzd-2a-Ttq" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="YzK-mh-cRh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Pn-qC-rDI" secondAttribute="trailing" constant="16" id="cji-5B-KDU"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Pn-qC-rDI" secondAttribute="bottom" constant="100" id="ohN-8V-8Yi"/>
-                <constraint firstItem="0Pn-qC-rDI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="raz-LN-VSY"/>
-                <constraint firstItem="g2F-ZD-chS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="zYY-m1-EGO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Pn-qC-rDI" secondAttribute="trailing" id="cji-5B-KDU"/>
+                <constraint firstItem="Qon-eC-bH5" firstAttribute="top" secondItem="Vnl-Hh-hKs" secondAttribute="bottom" constant="16" id="oCf-JP-2ka"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Pn-qC-rDI" secondAttribute="bottom" constant="12" id="ohN-8V-8Yi"/>
+                <constraint firstItem="0Pn-qC-rDI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="raz-LN-VSY"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </view>

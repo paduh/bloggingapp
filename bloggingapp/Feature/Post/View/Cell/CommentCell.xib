@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,31 +23,46 @@
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-34-F8S">
-                        <rect key="frame" x="16" y="82.5" width="346" height="17.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56e-0v-y4X">
-                        <rect key="frame" x="16" y="12" width="346" height="26"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZM-Lp-8ZB" customClass="CardView" customModule="bloggingapp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="8" width="354" height="111"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56e-0v-y4X">
+                                <rect key="frame" x="12" y="12" width="330" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-34-F8S">
+                                <rect key="frame" x="12" y="34" width="330" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lR1-34-F8S" firstAttribute="top" secondItem="56e-0v-y4X" secondAttribute="bottom" constant="8" id="20F-Ju-7FG"/>
+                            <constraint firstAttribute="trailing" secondItem="56e-0v-y4X" secondAttribute="trailing" constant="12" id="Hly-8a-OXL"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lR1-34-F8S" secondAttribute="bottom" constant="12" id="Rer-VA-jmM"/>
+                            <constraint firstItem="lR1-34-F8S" firstAttribute="leading" secondItem="56e-0v-y4X" secondAttribute="leading" id="Wbx-DH-wMd"/>
+                            <constraint firstItem="56e-0v-y4X" firstAttribute="leading" secondItem="sZM-Lp-8ZB" secondAttribute="leading" constant="12" id="hdl-yA-9dq"/>
+                            <constraint firstItem="56e-0v-y4X" firstAttribute="top" secondItem="sZM-Lp-8ZB" secondAttribute="top" constant="12" id="vAg-Lg-Wje"/>
+                            <constraint firstItem="lR1-34-F8S" firstAttribute="trailing" secondItem="56e-0v-y4X" secondAttribute="trailing" id="w5r-7E-uUV"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lR1-34-F8S" secondAttribute="bottom" constant="16" id="1Np-nb-5xd"/>
-                    <constraint firstItem="lR1-34-F8S" firstAttribute="leading" secondItem="ctc-xc-c9j" secondAttribute="leading" id="79b-UM-iju"/>
                     <constraint firstItem="ctc-xc-c9j" firstAttribute="top" secondItem="wYT-Pq-rtq" secondAttribute="top" constant="50" id="7pF-Pu-iPz"/>
-                    <constraint firstItem="lR1-34-F8S" firstAttribute="trailing" secondItem="ctc-xc-c9j" secondAttribute="trailing" id="9Cr-GS-Gqa"/>
-                    <constraint firstItem="lR1-34-F8S" firstAttribute="top" secondItem="ctc-xc-c9j" secondAttribute="bottom" constant="12" id="FOJ-9d-1Gg"/>
                     <constraint firstItem="ctc-xc-c9j" firstAttribute="leading" secondItem="wYT-Pq-rtq" secondAttribute="leading" constant="16" id="UAl-Ps-nRn"/>
-                    <constraint firstItem="56e-0v-y4X" firstAttribute="leading" secondItem="wYT-Pq-rtq" secondAttribute="leading" constant="16" id="VXY-d1-sOr"/>
+                    <constraint firstItem="sZM-Lp-8ZB" firstAttribute="leading" secondItem="wYT-Pq-rtq" secondAttribute="leading" constant="12" id="UQ4-yL-MYa"/>
+                    <constraint firstAttribute="trailing" secondItem="sZM-Lp-8ZB" secondAttribute="trailing" constant="12" id="ffA-XD-Hwj"/>
+                    <constraint firstItem="sZM-Lp-8ZB" firstAttribute="top" secondItem="wYT-Pq-rtq" secondAttribute="top" constant="8" id="gg4-Ub-pfX"/>
                     <constraint firstAttribute="trailing" secondItem="ctc-xc-c9j" secondAttribute="trailing" constant="16" id="hQx-yh-8Vx"/>
-                    <constraint firstItem="56e-0v-y4X" firstAttribute="top" secondItem="wYT-Pq-rtq" secondAttribute="top" constant="12" id="idn-ZY-iWY"/>
-                    <constraint firstAttribute="trailing" secondItem="56e-0v-y4X" secondAttribute="trailing" constant="16" id="s6Q-wa-ESs"/>
-                    <constraint firstItem="ctc-xc-c9j" firstAttribute="top" secondItem="56e-0v-y4X" secondAttribute="bottom" constant="12" id="tBC-WR-t2K"/>
+                    <constraint firstAttribute="bottom" secondItem="sZM-Lp-8ZB" secondAttribute="bottom" constant="12" id="yAh-cw-iXg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="RMF-2f-3Ix"/>
@@ -58,4 +74,9 @@
             <point key="canvasLocation" x="179.71014492753625" y="147.65625"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

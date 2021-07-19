@@ -15,13 +15,11 @@ class PostPresenter: PostPresenterPresentable {
     
     var postService: PostServiceDelegate
     var postView: PostView?
-    var navigator: PostNavigator
     
     // MARK: Initialiser
     
-    init(postService: PostServiceDelegate = PostService<[Post]>(), navigator: PostNavigator) {
+    init(postService: PostServiceDelegate = PostService<[Post]>()) {
         self.postService = postService
-        self.navigator = navigator
     }
     
     func viewDidLoad() {
@@ -55,6 +53,26 @@ extension PostPresenter {
                         return
                     }
                     self.postView?.loadPosts(posts: posts)
+                }
+            }
+        }
+    }
+    
+    func fetchPostComment(id: Int) {
+        postView?.showLoading()
+        postService.fetchComments(id: id) { [weak self] (result) in
+            guard let self = self else { return }
+            self.postView?.hideLoading()
+            DispatchQueue.main.async {
+                switch result {
+                case.failure(let error):
+                    self.postView?.showErrorMsg(msg: error.title)
+                case.success(let comments):
+                    guard let comments = comments else {
+                        self.postView?.setEmptyState()
+                        return
+                    }
+                    self.postView?.loadPostComments(comments: comments)
                 }
             }
         }

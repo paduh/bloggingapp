@@ -30,9 +30,13 @@ final class PostNavigator: Navigator {
 
     }
     
-    func navigate(to destination: Destination, object: Object?) {
-        let vc = makeViewController(for: destination)
-        navigationController?.pushViewController(vc, animated: true)
+    func navigate(to destination: Destination, object: Post?) {
+        switch destination {
+        case .postDetails:
+            let vc = makeViewController(for: destination)
+            (vc as? PostDetailsController)?.post = object
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -42,7 +46,8 @@ private extension PostNavigator {
     func makeViewController(for destination: Destination) -> UIViewController {
        switch destination{
        case .postDetails:
-           return UIViewController()
+        let controller = Assembly.postDetailsController
+        return controller
        }
     }
 }

@@ -22,8 +22,15 @@ final class PostController: UIViewController {
     
     // MARK:  Properties
     
+    private var posts = [Post]() {
+        didSet {
+            tableView.isHidden = posts.isEmpty
+            tableView.reloadData()
+        }
+    }
     private var presenter: PostPresenterPresentable!
     private var dataSource: GenericTableViewDelegate<Post, PostCell>!
+    private var navigator: PostNavigator!
     
     // MARK: Life cycle methods
 
@@ -36,6 +43,7 @@ final class PostController: UIViewController {
         super.viewDidAppear(animated)
         navigationController?.topViewController?.title = pageTitle
         handlePresenter()
+        handleNavigator()
     }
     
     private func setupDataSource() {
@@ -44,8 +52,12 @@ final class PostController: UIViewController {
         tableView.isHidden = true
     }
     
+    private func handleNavigator() {
+        navigator = PostNavigator(navigationController: navigationController)
+    }
+    
     private func handlePresenter() {
-        presenter = PostPresenter(navigator: PostNavigator(navigationController: navigationController))
+        presenter = PostPresenter()
         presenter.viewDidLoad()
         presenter.attacheView(self)
     }
@@ -69,6 +81,14 @@ private extension PostController {
     func hideLoader() {
         activityView.isHidden = true
         activityView.stopAnimating()
+    }
+    
+    func handleDidSelect() -> ((Int) -> Void) {
+        return { [weak self] index in
+            guard let self = self else { return }
+            let post = self.posts[index]
+            self.navigator.navigate(to: .postDetails, object: post)
+        }
     }
 }
 
@@ -96,9 +116,11 @@ extension PostController: PostView {
     }
     
     func loadPosts(posts: [Post]) {
+        self.posts = posts
         dataSource = handleDataSource(posts: posts)
         setupDataSource()
         tableView.isHidden = posts.isEmpty
         tableView.reloadData()
+        dataSource.didSelectItemAt = handleDidSelect()
     }
 }
