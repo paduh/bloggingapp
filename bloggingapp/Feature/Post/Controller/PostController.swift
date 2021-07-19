@@ -40,6 +40,7 @@ final class PostController: UIViewController {
     private func setupDataSource() {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
+        tableView.isHidden = true
     }
     
     private func handlePresenter() {
@@ -71,7 +72,7 @@ extension PostController: PostView {
     }
     
     func hideLoading() {
-        
+
     }
     
     func showErrorMsg(msg: String) {
@@ -85,6 +86,7 @@ extension PostController: PostView {
     func loadPosts(posts: [Post]) {
         dataSource = handleDataSource(posts: posts)
         setupDataSource()
+        tableView.isHidden = posts.isEmpty
         tableView.reloadData()
     }
 }
