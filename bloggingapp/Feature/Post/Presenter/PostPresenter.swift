@@ -19,7 +19,7 @@ class PostPresenter: PostPresenterPresentable {
     
     // MARK: Initialiser
     
-    init(postService: PostServiceDelegate = PostService(), navigator: PostNavigator) {
+    init(postService: PostServiceDelegate = PostService<[Post]>(), navigator: PostNavigator) {
         self.postService = postService
         self.navigator = navigator
     }

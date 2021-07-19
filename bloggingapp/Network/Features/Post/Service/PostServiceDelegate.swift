@@ -8,13 +8,12 @@
 import Foundation
 
 typealias PostCompletion = ((Result<[Post]?>)->())
+typealias CommentCompletion = ((Result<[Comment]?>)->())
 
 // MARK: - PostServiceDelegate
 
 protocol PostServiceDelegate {
-    
-    var router: Router<PostEndpoint, [Post]> { get set }
-    
+            
+    func fetchComments(id: Int, completion: @escaping CommentCompletion)
     func fetchPosts(completion: @escaping PostCompletion)
-    
 }

@@ -11,4 +11,5 @@ struct Constant {
     
     static let baseUrl = "http://jsonplaceholder.typicode.com"
     static let posts = "/posts"
+    static let comments = "/posts/"
 }

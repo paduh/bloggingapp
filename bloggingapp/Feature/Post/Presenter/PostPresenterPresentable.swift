@@ -8,7 +8,6 @@
 import Foundation
 
 protocol PostPresenterPresentable {
-    var postService: PostServiceDelegate { get set }
     var postView: PostView? { get set }
     var navigator: PostNavigator { get set }
     

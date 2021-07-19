@@ -11,6 +11,7 @@ import Foundation
 
 enum PostEndpoint {
     case posts
+    case postComments(id: Int)
 }
 
 // MARK: - EndPointType
@@ -25,12 +26,14 @@ extension PostEndpoint: EndPointType {
         switch self {
         case .posts:
             return Constant.posts
+        case .postComments:
+            return Constant.comments
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .posts:
+        case .posts, .postComments:
             return .get
         }
     }
@@ -39,6 +42,11 @@ extension PostEndpoint: EndPointType {
         switch self {
         case .posts:
             return .request
+        case .postComments(let id):
+            let param: [String: Int] = [
+                "postId": id
+            ]
+            return .requestParameters(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: param)
         }
     }
     

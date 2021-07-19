@@ -9,25 +9,32 @@ import Foundation
 
 // MARK: - PostService
 
-class PostService: PostServiceDelegate {
+class PostService<T: Codable>: PostServiceDelegate {
     
     // MARK: Properties
 
-    var router: Router<PostEndpoint, [Post]>
+    var postRouter: Router<PostEndpoint, [Post]>
+    var commentRouter: Router<PostEndpoint, [Comment]>
 
     // MARK: Initialiser / DeInitializer
 
     init(
-        router: Router<PostEndpoint, [Post]> = Router<PostEndpoint, [Post]>()
+        postRouter: Router<PostEndpoint, [Post]> = Router<PostEndpoint, [Post]>(),
+        commentRouter: Router<PostEndpoint, [Comment]> = Router<PostEndpoint, [Comment]>()
        ) {
-        self.router = router
+        self.postRouter = postRouter
+        self.commentRouter = commentRouter
     }
 }
 
 // MARK: - PostService & PostServiceDelegate
 
-extension PostService {
-    func fetchPosts(completion: @escaping PostCompletion) {
-        router.request(route: .posts, completion: completion)
+extension PostService {    
+    func fetchPosts(completion: @escaping PostCompletion){
+        postRouter.request(route: .posts, completion: completion)
+    }
+    
+    func fetchComments(id: Int, completion: @escaping CommentCompletion) {
+        commentRouter.request(route: .postComments(id: id), completion: completion)
     }
 }
