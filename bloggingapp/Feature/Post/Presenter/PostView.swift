@@ -15,4 +15,10 @@ protocol PostView {
     func showErrorMsg(msg: String)
     func setEmptyState()
     func loadPosts(posts: [Post])
+    func loadPostComments(comments: [Comment])
+}
+
+extension PostView {
+    func loadPosts(posts: [Post]) {}
+    func loadPostComments(comments: [Comment]) {}
 }
