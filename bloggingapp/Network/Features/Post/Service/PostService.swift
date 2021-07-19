@@ -9,16 +9,16 @@ import Foundation
 
 // MARK: - PostService
 
-class PostService<Model: Codable>: PostServiceDelegate {
+class PostService: PostServiceDelegate {
     
     // MARK: Properties
 
-    var router: Router<PostEndpoint, Model>
+    var router: Router<PostEndpoint, [Post]>
 
     // MARK: Initialiser / DeInitializer
 
     init(
-        router: Router<PostEndpoint, Model> = Router<PostEndpoint, Model>()
+        router: Router<PostEndpoint, [Post]> = Router<PostEndpoint, [Post]>()
        ) {
         self.router = router
     }
@@ -27,7 +27,7 @@ class PostService<Model: Codable>: PostServiceDelegate {
 // MARK: - PostService & PostServiceDelegate
 
 extension PostService {
-    func fetchPosts(completion: @escaping PostCompletion<Model>) {
+    func fetchPosts(completion: @escaping PostCompletion) {
         router.request(route: .posts, completion: completion)
     }
 }

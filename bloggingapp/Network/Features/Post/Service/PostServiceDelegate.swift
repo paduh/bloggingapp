@@ -7,16 +7,14 @@
 
 import Foundation
 
-typealias PostCompletion<Model:Codable> = ((Result<Model?>)->())
+typealias PostCompletion = ((Result<[Post]?>)->())
 
 // MARK: - PostServiceDelegate
 
 protocol PostServiceDelegate {
     
-    associatedtype Model: Codable
+    var router: Router<PostEndpoint, [Post]> { get set }
     
-    var router: Router<PostEndpoint, Model> { get set }
-    
-    func fetchPosts(completion: @escaping PostCompletion<Model>)
+    func fetchPosts(completion: @escaping PostCompletion)
     
 }
