@@ -24,7 +24,7 @@ extension PostEndpoint: EndPointType {
     var path: String {
         switch self {
         case .posts:
-            return "/posts"
+            return Constant.posts
         }
     }
     

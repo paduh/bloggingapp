@@ -10,4 +10,5 @@ import Foundation
 struct Constant {
     
     static let baseUrl = ""
+    static let posts = "/posts"
 }
