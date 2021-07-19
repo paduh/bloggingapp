@@ -13,6 +13,7 @@ final class PostController: UIViewController {
     
     // MARK: IBOutlets
     
+    @IBOutlet weak private var activityView: UIActivityIndicatorView!
     @IBOutlet weak private var tableView: UITableView!{
         didSet {
             tableView.register(PostCell.self)
@@ -51,12 +52,22 @@ final class PostController: UIViewController {
 
 // MARK: - Helpers
 
-extension PostController {
+private extension PostController {
     func handleDataSource(posts: [Post]) -> GenericTableViewDelegate<Post, PostCell> {
         return GenericTableViewDelegate<Post, PostCell>(models: posts, cellConfigurator: { (post, cell) in
             let item = PostItem(post)
             cell.configureCell(item: item)
         })
+    }
+    
+    func showLoader() {
+        activityView.isHidden = false
+        activityView.startAnimating()
+    }
+    
+    func hideLoader() {
+        activityView.isHidden = true
+        activityView.stopAnimating()
     }
 }
 
@@ -68,15 +79,15 @@ extension PostController: PostView {
     }
     
     func showLoading() {
-        
+        showLoader()
     }
     
     func hideLoading() {
-
+        hideLoader()
     }
     
     func showErrorMsg(msg: String) {
-        
+        showAlert(msg: msg)
     }
     
     func setEmptyState() {
@@ -90,4 +101,3 @@ extension PostController: PostView {
         tableView.reloadData()
     }
 }
-

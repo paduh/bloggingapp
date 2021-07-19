@@ -20,7 +20,7 @@ struct Text: RawRepresentable {
 
 extension Text {
     static let ok = Text(rawValue: "Ok")
-    static let league = Text(rawValue: "Blogging App")
+    static let bloggingApp = Text(rawValue: "Blogging App")
     static let cancel = Text(rawValue: "Cancel")
     static let unknownError = Text(rawValue: "Unknown Error")
     static let cannotDequeueheader = Text(rawValue: "Could not dequeue header cell with type")

@@ -39,8 +39,10 @@ class PostPresenter: PostPresenterPresentable {
 
 extension PostPresenter {
     func fetchPosts() {
+        postView?.showLoading()
         postService.fetchPosts { [weak self] (result) in
             guard let self = self else { return }
+            self.postView?.hideLoading()
             DispatchQueue.main.async {
                 switch result {
                 case.failure(let error):
