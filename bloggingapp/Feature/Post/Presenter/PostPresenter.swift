@@ -15,11 +15,13 @@ class PostPresenter: PostPresenterPresentable {
     
     var postService: PostServiceDelegate
     var postView: PostView?
+    var navigator: PostNavigator
     
     // MARK: Initialiser
     
-    init(postService: PostServiceDelegate = PostService()) {
+    init(postService: PostServiceDelegate = PostService(), navigator: PostNavigator) {
         self.postService = postService
+        self.navigator = navigator
     }
     
     func viewDidLoad() {

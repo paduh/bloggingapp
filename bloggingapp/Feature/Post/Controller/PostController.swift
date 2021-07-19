@@ -22,20 +22,20 @@ final class PostController: UIViewController {
     
     // MARK:  Properties
     
-    private var presenter: PostPresenterPresentable = PostPresenter()
+    private var presenter: PostPresenterPresentable!
     private var dataSource: GenericTableViewDelegate<Post, PostCell>!
     
     // MARK: Life cycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        handlePresenter()
         setupDataSource()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.topViewController?.title = pageTitle
+        handlePresenter()
     }
     
     private func setupDataSource() {
@@ -45,6 +45,7 @@ final class PostController: UIViewController {
     }
     
     private func handlePresenter() {
+        presenter = PostPresenter(navigator: PostNavigator(navigationController: navigationController))
         presenter.viewDidLoad()
         presenter.attacheView(self)
     }

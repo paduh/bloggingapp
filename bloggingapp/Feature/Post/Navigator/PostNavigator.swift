@@ -13,12 +13,12 @@ final class PostNavigator: Navigator {
     
     // MARK: Properties
 
-    private var navigationController: UINavigationController!
+    private weak var navigationController: UINavigationController?
     typealias Object = Post
     
     // MARK: Initialiser
 
-     init(navigationController: UINavigationController
+     init(navigationController: UINavigationController?
      ) {
             self.navigationController = navigationController
      }
@@ -32,7 +32,7 @@ final class PostNavigator: Navigator {
     
     func navigate(to destination: Destination, object: Object?) {
         let vc = makeViewController(for: destination)
-        navigationController.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
