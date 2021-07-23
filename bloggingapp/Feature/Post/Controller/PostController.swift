@@ -32,6 +32,17 @@ final class PostController: UIViewController {
     private var dataSource: GenericTableViewDelegate<Post, PostCell>!
     private var navigator: PostNavigator!
     
+    // MARK:  Initialiser
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    init(presenter: PostPresenterPresentable) {
+        super.init(nibName: nil, bundle: nil)
+        self.presenter = presenter
+    }
+    
     // MARK: Life cycle methods
 
     override func viewDidLoad() {

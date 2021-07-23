@@ -42,9 +42,7 @@ It should be covered by Unit Tests
 ###  Model - plain Swift classes / structs
 Models objects used by your application such as Post, Comment etc
 
-### Router 
-Router - contains actual implementation of the protocols defined in the Application Logic layer
- - We can implement for instance a LocalPersistenceGateway protocol using CoreData or Realm
- - We can implement for instance an ApiGateway protocol using URLSession or Alamofire
- - We can implement for instance a UserSettings protocol using UserDefaults
- - It should be covered by Unit Tests
+### Navigator
+- Navigator - contains actual implementation of the protocols defined in the Application Logic layer
+
+# Unit Test - Please note that due to limited time, I could not write unit test

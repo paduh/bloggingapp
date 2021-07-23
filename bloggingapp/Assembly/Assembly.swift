@@ -15,4 +15,15 @@ enum Assembly {
         let controller = PostDetailsController(presenter: presenter)
         return controller
     }
+    
+    static var postController: PostController {
+        let postService: PostServiceDelegate = PostService<[Post]>()
+        let presenter = PostPresenter(postService: postService)
+        let controller = PostController(presenter: presenter)
+        return controller
+    }
+    
+    static var navController: UINavigationController {
+        UINavigationController(rootViewController: postController)
+    }
 }
