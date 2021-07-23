@@ -15,7 +15,7 @@ struct Comment: Codable {
     let name: String
     let email: String
     let body: String
-    
+
     init(
         id: Int,
         postId: Int,

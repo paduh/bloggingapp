@@ -15,7 +15,7 @@ final class PostCell: UITableViewCell {
 
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var bodyLabel: UILabel!
-    
+
     // MARK: Life cycle
 
     override func prepareForReuse() {

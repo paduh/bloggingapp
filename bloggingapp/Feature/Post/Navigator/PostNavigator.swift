@@ -15,7 +15,7 @@ final class PostNavigator: Navigator {
 
     private weak var navigationController: UINavigationController?
     typealias Object = Post
-    
+
     // MARK: Initialiser
 
      init(navigationController: UINavigationController?

@@ -15,7 +15,7 @@ class PostPresenter: PostPresenterPresentable {
 
     var postService: PostServiceDelegate
     var postView: PostView?
-    
+
     // MARK: Initialiser
 
     init(postService: PostServiceDelegate = PostService<[Post]>()) {
