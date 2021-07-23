@@ -11,6 +11,6 @@ import Foundation
 
 protocol CellPresentable {
     associatedtype Item
-    
+
     func configureCell(item: Item)
 }

@@ -10,7 +10,6 @@ import Foundation
 // MARK: - EndPointType
 
 public protocol EndPointType {
-    
     var baseUrl: URL { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }

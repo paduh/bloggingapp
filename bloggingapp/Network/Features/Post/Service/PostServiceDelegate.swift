@@ -7,13 +7,13 @@
 
 import Foundation
 
-typealias PostCompletion = ((Result<[Post]?>)->())
-typealias CommentCompletion = ((Result<[Comment]?>)->())
+typealias PostCompletion = ((Result<[Post]?>) -> Void)
+typealias CommentCompletion = ((Result<[Comment]?>) -> Void)
 
 // MARK: - PostServiceDelegate
 
-protocol PostServiceDelegate {
-            
-    func fetchComments(id: Int, completion: @escaping CommentCompletion)
+protocol PostServiceDelegate: class {
+
+    func fetchComments(postId: Int, completion: @escaping CommentCompletion)
     func fetchPosts(completion: @escaping PostCompletion)
 }

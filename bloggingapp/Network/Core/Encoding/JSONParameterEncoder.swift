@@ -9,19 +9,31 @@ import Foundation
 
 // MARK: - JSONParameterEncoder
 
-public struct JSONParameterEncoder: ParameterEncoder {
-    
-    
-    public func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
-        
+struct JSONParameterEncoder: ParameterEncoder {
+    var acceptHeader: String? {
+        urlRequest?.value(forHTTPHeaderField: "Accept")
+    }
+
+    var contentTypeHeader: String? {
+        (urlRequest?.value(forHTTPHeaderField: "Content-Type"))
+    }
+
+    init(urlRequest: inout URLRequest) {
+        self.urlRequest = urlRequest
+    }
+
+    var urlRequest: URLRequest?
+
+    func encode(with parameters: Parameters) throws {
+        var urlRequest = self.urlRequest
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-            urlRequest.httpBody = jsonData
-            if urlRequest.value(forHTTPHeaderField: "Accept") == nil || (urlRequest.value(forHTTPHeaderField: "Content-Type") != nil) {
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+            urlRequest?.httpBody = jsonData
+            if acceptHeader == nil || contentTypeHeader != nil {
+                urlRequest?.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                urlRequest?.setValue("application/json", forHTTPHeaderField: "Accept")
             }
-        }catch {
+        } catch {
             throw NetworkError.encodingFailed
         }
     }

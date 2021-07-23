@@ -10,16 +10,16 @@ import Foundation
 // MARK: - CommentItem
 
 final class CommentItem {
-    
+
     // MARK: Properties
 
     let email: String
     let title: String
     let body: String
     let model: Comment
-    
-    // MARK:- Initialiser
-    
+
+    // MARK: Initialiser
+
     init(_ model: Comment) {
         self.model = model
         email = model.email

@@ -7,20 +7,20 @@
 
 import Foundation
 
-// MARK:- Network Router
+// MARK: - Network Router
 
 public protocol NetworkRouter {
-    
+
     associatedtype EndPoint: EndPointType
-    associatedtype T: Codable
-    
-    typealias NetworkRouterCompletion = ((Result<T>) ->())
-    
+    associatedtype Model: Codable
+
+    typealias NetworkRouterCompletion = ((Result<Model>) -> Void)
+
     func request(route: EndPoint, logContent: Bool, completion: @escaping NetworkRouterCompletion)
     func cancel()
 }
 
-// MARK:- Generic Network Router Result
+// MARK: - Generic Network Router Result
 
 public enum Result<T: Codable> {
     case success(_ data: T)

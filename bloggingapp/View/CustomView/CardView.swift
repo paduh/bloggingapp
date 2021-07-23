@@ -12,24 +12,23 @@ import UIKit
 
 @IBDesignable
 final class CardView: UIView {
-    
+
     // MARK: - IBInspectable Properties
-    
+
     @IBInspectable var shadowOffsetWidth: Int = 0
     @IBInspectable var shadowOffsetHeight: Int = 3
     @IBInspectable var shadowColor: UIColor? = UIColor.gray
     @IBInspectable var shadowOpacity: Float = 0.2
     @IBInspectable var cardRadius: CGFloat = 10
     @IBInspectable var cornerRadius: CGFloat = 0
-    
+
     public override func layoutSubviews() {
         layer.cornerRadius = cornerRadius
         let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         layer.masksToBounds = false
         layer.shadowColor = shadowColor?.cgColor
-        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight);
+        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight)
         layer.shadowOpacity = shadowOpacity
         layer.shadowPath = shadowPath.cgPath
     }
 }
-

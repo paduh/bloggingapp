@@ -10,16 +10,16 @@ import Foundation
 // MARK: - Text
 
 struct Text: RawRepresentable {
-    
+
     var rawValue: String
-    
+
     init(rawValue: String) {
         self.rawValue = rawValue
     }
 }
 
 extension Text {
-    static let ok = Text(rawValue: "Ok")
+    static let okay = Text(rawValue: "Ok")
     static let bloggingApp = Text(rawValue: "Blogging App")
     static let cancel = Text(rawValue: "Cancel")
     static let unknownError = Text(rawValue: "Unknown Error")

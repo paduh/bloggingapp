@@ -10,7 +10,7 @@ import Foundation
 // MARK: - PostService
 
 class PostService<T: Codable>: PostServiceDelegate {
-    
+
     // MARK: Properties
 
     var postRouter: Router<PostEndpoint, [Post]>
@@ -29,12 +29,13 @@ class PostService<T: Codable>: PostServiceDelegate {
 
 // MARK: - PostService & PostServiceDelegate
 
-extension PostService {    
-    func fetchPosts(completion: @escaping PostCompletion){
+extension PostService {
+
+    func fetchPosts(completion: @escaping PostCompletion) {
         postRouter.request(route: .posts, completion: completion)
     }
-    
-    func fetchComments(id: Int, completion: @escaping CommentCompletion) {
-        commentRouter.request(route: .postComments(id: id), completion: completion)
+
+    func fetchComments(postId: Int, completion: @escaping CommentCompletion) {
+        commentRouter.request(route: .postComments(postId: postId), completion: completion)
     }
 }

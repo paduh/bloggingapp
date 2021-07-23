@@ -14,7 +14,7 @@ public enum HTTPMethod: String {
     case post
     case put
     case delete
-    
+
     var title: String {
         switch self {
         case .get: return "GET"

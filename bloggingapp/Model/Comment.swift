@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK:-  Comment
+// MARK: - Comment
 
 struct Comment: Codable {
     let id: Int

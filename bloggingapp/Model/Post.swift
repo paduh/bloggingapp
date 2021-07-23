@@ -7,15 +7,15 @@
 
 import Foundation
 
-// MARK:- Post
+// MARK: - Post
 
 struct Post: Codable {
 
-    let userId:Int
+    let userId: Int
     let id: Int
     let title: String
     let body: String
-    
+
     init(
         userId: Int,
         id: Int,

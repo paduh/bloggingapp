@@ -7,18 +7,18 @@
 
 import Foundation
 
-// MARK:- PostItem
+// MARK: - PostItem
 
 final class PostItem {
-    
+
     // MARK: Properties
-    
+
     let title: String
     let body: String
     let model: Post
-    
-    // MARK:- Initialiser
-    
+
+    // MARK: Initialiser
+
     init(_ model: Post) {
         self.model = model
         self.title = model.title

@@ -10,14 +10,14 @@ import UIKit
 // MARK: - PostCell
 
 final class PostCell: UITableViewCell {
-    
+
     // MARK: IBOutlets
-    
+
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var bodyLabel: UILabel!
     
     // MARK: Life cycle
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = .none
@@ -25,11 +25,11 @@ final class PostCell: UITableViewCell {
     }
 }
 
-// MARK:- PostCell & CellPresentable
+// MARK: - PostCell & CellPresentable
 
 extension PostCell: CellPresentable {
     typealias Item = PostItem
-    
+
     func configureCell(item: PostItem) {
         titleLabel.text = item.title
         bodyLabel.text = item.body

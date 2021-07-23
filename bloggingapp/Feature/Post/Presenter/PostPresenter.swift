@@ -12,24 +12,24 @@ import Foundation
 class PostPresenter: PostPresenterPresentable {
 
     // MARK: Properties
-    
+
     var postService: PostServiceDelegate
     var postView: PostView?
     
     // MARK: Initialiser
-    
+
     init(postService: PostServiceDelegate = PostService<[Post]>()) {
         self.postService = postService
     }
-    
+
     func viewDidLoad() {
         fetchPosts()
     }
-    
+
     func detachView() {
         postView = nil
     }
-    
+
     func attacheView(_ view: PostView) {
         postView = view
     }
@@ -57,10 +57,10 @@ extension PostPresenter {
             }
         }
     }
-    
-    func fetchPostComment(id: Int) {
+
+    func fetchPostComment(postId: Int) {
         postView?.showLoading()
-        postService.fetchComments(id: id) { [weak self] (result) in
+        postService.fetchComments(postId: postId) { [weak self] (result) in
             guard let self = self else { return }
             self.postView?.hideLoading()
             DispatchQueue.main.async {

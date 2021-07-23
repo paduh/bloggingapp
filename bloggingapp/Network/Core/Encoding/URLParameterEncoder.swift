@@ -7,26 +7,41 @@
 
 import Foundation
 
-// MARK:- URLParameterEncoder
+// MARK: - URLParameterEncoder
 
 struct URLParameterEncoder: ParameterEncoder {
-    
-    func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
-        
-        guard let url = urlRequest.url else { throw NetworkError.missingURL}
+    var acceptHeader: String? {
+        urlRequest?.value(forHTTPHeaderField: "Accept")
+    }
+
+    var contentTypeHeader: String? {
+        (urlRequest?.value(forHTTPHeaderField: "Content-Type"))
+    }
+    var urlRequest: URLRequest?
+
+    init(urlRequest: inout URLRequest) {
+        self.urlRequest = urlRequest
+    }
+
+    func encode(with parameters: Parameters) throws {
+        var urlRequest = self.urlRequest
+        guard let url = urlRequest?.url else { throw NetworkError.missingURL}
         if var urlComponent = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {
-            
+
             urlComponent.queryItems = [URLQueryItem]()
-            
+
             for (key, value) in parameters {
-                let queryItem = URLQueryItem(name: key, value: "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))
+            let queryItem = URLQueryItem(
+                name: key,
+                value: "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))
                 urlComponent.queryItems?.append(queryItem)
             }
-            urlRequest.url = urlComponent.url
+            urlRequest?.url = urlComponent.url
         }
-        if urlRequest.value(forHTTPHeaderField: "Accept") == nil || (urlRequest.value(forHTTPHeaderField: "Content-Type") != nil) {
-            urlRequest.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            urlRequest.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Accept")
+
+        if acceptHeader == nil || contentTypeHeader != nil {
+            urlRequest?.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            urlRequest?.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Accept")
         }
     }
 }

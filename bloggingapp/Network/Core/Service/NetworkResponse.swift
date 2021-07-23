@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK:- Network Response
+// MARK: - Network Response
 
 public enum NetworkResponse {
     case success
@@ -17,7 +17,7 @@ public enum NetworkResponse {
     case failed, noData, unableToDecode
     case noNetworkConnection
     case custom(info: String)
-    
+
     public var title: String {
         switch self {
         case .success:
@@ -27,7 +27,7 @@ public enum NetworkResponse {
         case .badRequest:
             return "Well this is embarrassing... The service is unavailable at the moment. Please try again later."
         case .outdated:
-            return "Well this is embarrassing.. The service is unavailable at the moment, we're working on a fix so please try again later."
+            return "Well this is embarrassing... The service is unavailable at the moment, we're working on it"
         case .failed, .noData, .unableToDecode:
             return "Well this is embarrassing.. The service is unavailable at the moment. Please try again later."
         case .noNetworkConnection:

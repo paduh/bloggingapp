@@ -10,7 +10,7 @@ import UIKit
 // MARK: - PostNavigator
 
 final class PostNavigator: Navigator {
-    
+
     // MARK: Properties
 
     private weak var navigationController: UINavigationController?
@@ -22,20 +22,20 @@ final class PostNavigator: Navigator {
      ) {
             self.navigationController = navigationController
      }
-    
+
     // MARK: Destination
-    
+
     enum Destination {
         case postDetails
 
     }
-    
+
     func navigate(to destination: Destination, object: Post?) {
         switch destination {
         case .postDetails:
-            let vc = makeViewController(for: destination)
-            (vc as? PostDetailsController)?.post = object
-            navigationController?.pushViewController(vc, animated: true)
+            let controller = makeViewController(for: destination)
+            (controller as? PostDetailsController)?.post = object
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
@@ -44,7 +44,7 @@ final class PostNavigator: Navigator {
 
 private extension PostNavigator {
     func makeViewController(for destination: Destination) -> UIViewController {
-       switch destination{
+       switch destination {
        case .postDetails:
         let controller = Assembly.postDetailsController
         return controller

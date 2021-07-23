@@ -7,21 +7,21 @@
 
 import UIKit
 
-// MARK: -  PostController
+// MARK: - PostController
 
 final class PostController: UIViewController {
-    
+
     // MARK: IBOutlets
-    
+
     @IBOutlet weak private var activityView: UIActivityIndicatorView!
-    @IBOutlet weak private var tableView: UITableView!{
+    @IBOutlet weak private var tableView: UITableView! {
         didSet {
             tableView.register(PostCell.self)
         }
     }
-    
-    // MARK:  Properties
-    
+
+    // MARK: Properties
+
     private var posts = [Post]() {
         didSet {
             tableView.isHidden = posts.isEmpty
@@ -31,42 +31,42 @@ final class PostController: UIViewController {
     private var presenter: PostPresenterPresentable!
     private var dataSource: GenericTableViewDelegate<Post, PostCell>!
     private var navigator: PostNavigator!
-    
-    // MARK:  Initialiser
-    
+
+    // MARK: Initialiser
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     init(presenter: PostPresenterPresentable) {
         super.init(nibName: nil, bundle: nil)
         self.presenter = presenter
     }
-    
+
     // MARK: Life cycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.topViewController?.title = pageTitle
         handlePresenter()
         handleNavigator()
     }
-    
+
     private func setupDataSource() {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         tableView.isHidden = true
     }
-    
+
     private func handleNavigator() {
         navigator = PostNavigator(navigationController: navigationController)
     }
-    
+
     private func handlePresenter() {
         presenter = PostPresenter()
         presenter.viewDidLoad()
@@ -83,17 +83,17 @@ private extension PostController {
             cell.configureCell(item: item)
         })
     }
-    
+
     func showLoader() {
         activityView.isHidden = false
         activityView.startAnimating()
     }
-    
+
     func hideLoader() {
         activityView.isHidden = true
         activityView.stopAnimating()
     }
-    
+
     func handleDidSelect() -> ((Int) -> Void) {
         return { [weak self] index in
             guard let self = self else { return }
@@ -103,29 +103,27 @@ private extension PostController {
     }
 }
 
-// MARK: -  PostController & PostView
+// MARK: - PostController & PostView
 
 extension PostController: PostView {
     var pageTitle: String {
         Text.posts.rawValue
     }
-    
+
     func showLoading() {
         showLoader()
     }
-    
+
     func hideLoading() {
         hideLoader()
     }
-    
+
     func showErrorMsg(msg: String) {
         showAlert(msg: msg)
     }
-    
-    func setEmptyState() {
-        
-    }
-    
+
+    func setEmptyState() {}
+
     func loadPosts(posts: [Post]) {
         self.posts = posts
         dataSource = handleDataSource(posts: posts)

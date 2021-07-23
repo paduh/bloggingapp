@@ -11,17 +11,17 @@ import Foundation
 
 enum PostEndpoint {
     case posts
-    case postComments(id: Int)
+    case postComments(postId: Int)
 }
 
 // MARK: - EndPointType
 
 extension PostEndpoint: EndPointType {
-    
+
     var baseUrl: URL {
         return URL(string: Constant.baseUrl)!
     }
-    
+
     var path: String {
         switch self {
         case .posts:
@@ -30,26 +30,26 @@ extension PostEndpoint: EndPointType {
             return Constant.comments
         }
     }
-    
+
     var httpMethod: HTTPMethod {
         switch self {
         case .posts, .postComments:
             return .get
         }
     }
-    
+
     var task: HTTPTask {
         switch self {
         case .posts:
             return .request
-        case .postComments(let id):
+        case .postComments(let postId):
             let param: [String: Int] = [
-                "postId": id
+                "postId": postId
             ]
             return .requestParameters(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: param)
         }
     }
-    
+
     var headers: HTTPHeaders? {
         switch self {
         default:
