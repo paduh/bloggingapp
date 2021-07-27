@@ -42,8 +42,5 @@ It should be covered by Unit Tests
 ###  Model - plain Swift classes / structs
 Models objects used by your application such as Post, Comment etc
 
-### Navigator
-- Navigator - contains actual implementation of the protocols defined in the Application Logic layer
-
 ### Unit Test - Please note that due to limited time, I could not write unit test. 
 ### Dependency Manager - Added Cocoapod as a dependency manager in other to use SwiftLint to enforce Swift style and conventions in the repository
