@@ -24,7 +24,7 @@ Presentation Logic
  - It is a Swift class and not reference any iOS framework classes - this makes it easier to reuse it maybe in a macOS application
  - It should be covered by Unit Tests, no unit test done due to time constraint
  
- ###  Assembly - injects the dependency object graph into the scene (view controller)
+ ###  Assembly - injects the dependency object into the scene (view controller) and makes visible the dependency graph
  - Usually it contains very simple logic and we don't need to write Unit Tests for it
  
  ###  Navigator - contains navigation / flow logic from one scene (view controller) to another
@@ -45,4 +45,5 @@ Models objects used by your application such as Post, Comment etc
 ### Navigator
 - Navigator - contains actual implementation of the protocols defined in the Application Logic layer
 
-# Unit Test - Please note that due to limited time, I could not write unit test. Also added Cocoapod as a dependency manager in other to use SwiftLint to enforce Swift style and conventions in the repository
+# Unit Test - Please note that due to limited time, I could not write unit test. 
+# Dependency Manager - Added Cocoapod as a dependency manager in other to use SwiftLint to enforce Swift style and conventions in the repository
